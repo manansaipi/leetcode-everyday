@@ -23,12 +23,10 @@ var containsDuplicate = function(nums) {
     let sortingNUms = nums.sort();
     let length = nums.length;
     for (let x = 0; x < length; x++) {
-        if(nums[x] == nums[x+1]){
+        if(sortingNUms[x] == sortingNUms[x+1]){
         return true;
         }
-        
-        
     }
     return false;
 };
-console.log(containsDuplicate([1, 2, ]));
+console.log(containsDuplicate([1]));
