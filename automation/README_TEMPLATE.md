@@ -1,7 +1,16 @@
 # My LeetCode Progress
 
-![LeetCode Progress](progress.png)
+###
 
+<div align="center">
+<p float="left">
+  <img src="./automation/ss_result/profile.png" width="26%" style="margin-right: 1000px;" /> &nbsp; &nbsp; 
+  <img src="./automation/ss_result/solvedProblems.png" width="49%" /> 
+</p>
+
+![Submissions](./automation/ss_result/submissions.png)
+
+</div>
 My snapshot of my current progress:
 
 -   Total Problems Solved: {total_problems_solved}
@@ -10,20 +19,6 @@ My snapshot of my current progress:
 -   Hard: {total_hard}
 
 [View My LeetCode Profile](https://leetcode.com/manansaipi)
-
-## Screenshots
-
-### Profile
-
-![Profile](./ss_result/profile.png)
-
-### Solved Problems
-
-![Solved Problems](./ss_result/solvedProblems.png)
-
-### Submissions
-
-![Submissions](./ss_result/submissions.png)
 
 ## About
 

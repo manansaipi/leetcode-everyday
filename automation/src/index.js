@@ -19,8 +19,8 @@ async function getLeetCodeStats(username) {
 async function takeScreenshot(url, outputPath) {
 	const browser = await puppeteer.launch({
 		defaultViewport: {
-			width: 1280,
-			height: 2000,
+			width: 1280 * 1.5,
+			height: 2000 * 1.5,
 		},
 		executablePath:
 			"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
@@ -42,15 +42,20 @@ async function takeScreenshot(url, outputPath) {
 			".bg-layer-1.dark\\:bg-dark-layer-1.shadow-down-01.dark\\:shadow-dark-down-01.rounded-lg.lc-xl\\:h-\\[186px\\].min-h-\\[186px\\].w-full.pb-3.pt-4";
 		const submissionsSelector =
 			".bg-layer-1.dark\\:bg-dark-layer-1.shadow-down-01.dark\\:shadow-dark-down-01.rounded-lg.lc-md\\:pb-4.flex.h-auto.flex-col.space-y-4.p-4.pb-0";
+		const lastSubmissionSelector =
+			".bg-layer-1.dark\\:bg-dark-layer-1.shadow-down-01.dark\\:shadow-dark-down-01.rounded-lg.px-4.pb-4.pt-4";
+
 		// Wait for the elements to be visible
 		await page.waitForSelector(profileSelector);
 		await page.waitForSelector(solvedProblemsSelector);
 		await page.waitForSelector(submissionsSelector);
+		await page.waitForSelector(lastSubmissionSelector);
 
 		// Capture screenshots of the elements
 		const profileSelectorElement = await page.$(profileSelector);
 		const solvedProblemsElement = await page.$(solvedProblemsSelector);
 		const submissionsElement = await page.$(submissionsSelector);
+		const lastSubmissionsElement = await page.$(lastSubmissionSelector);
 
 		await profileSelectorElement.screenshot({
 			path: "./ss_result/profile.png",
@@ -60,6 +65,9 @@ async function takeScreenshot(url, outputPath) {
 		});
 		await submissionsElement.screenshot({
 			path: "./ss_result/submissions.png",
+		});
+		await lastSubmissionsElement.screenshot({
+			path: "./ss_result/lastSubmissions.png",
 		});
 
 		// Take the screenshot of the whole page (optional)

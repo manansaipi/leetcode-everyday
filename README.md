@@ -1,5 +1,7 @@
 # My LeetCode Progress
+
 ###
+
 <div align="center">
 <p float="left">
   <img src="./automation/ss_result/profile.png" width="26%" style="margin-right: 1000px;" /> &nbsp; &nbsp; 
@@ -7,16 +9,16 @@
 </p>
 
 ![Submissions](./automation/ss_result/submissions.png)
+
 </div>
 My snapshot of my current progress:
 
-- Total Problems Solved: 23
-- Easy: 18
-- Medium: 3
-- Hard: 2
+-   Total Problems Solved: 23
+-   Easy: 18
+-   Medium: 3
+-   Hard: 2
 
 [View My LeetCode Profile](https://leetcode.com/manansaipi)
-
 
 ## About
 
