@@ -10,6 +10,10 @@
 
 ![Submissions](./automation/ss_result/submissions.png)
 
+<h2 align="center">Last Submission</h2>
+
+![LastSubmission](./automation/ss_result/lastSubmissions.png)
+
 </div>
 My snapshot of my current progress:
 
