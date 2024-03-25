@@ -4,10 +4,10 @@
 
 My snapshot of my current progress:
 
--   Total Problems Solved: 23
--   Easy: 18
--   Medium: 3
--   Hard: 2
+-   Total Problems Solved: {total_problems_solved}
+-   Easy: {total_easy}
+-   Medium: {total_medium}
+-   Hard: {total_hard}
 
 [View My LeetCode Profile](https://leetcode.com/manansaipi)
 

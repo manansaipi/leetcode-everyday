@@ -1,45 +1,120 @@
 const fs = require("fs");
 const axios = require("axios");
-const cheerio = require("cheerio");
+const puppeteer = require("puppeteer");
 
+// Function to fetch LeetCode statistics from API
 async function getLeetCodeStats(username) {
 	try {
 		const url = `https://leetcode-stats-api.herokuapp.com/${username}`;
 		const response = await axios.get(url);
-		console.log(response.data.totalSolved);
-		return response.data.totalSolved;
+		console.log(response.data);
+		return response.data;
 	} catch (error) {
 		console.error("Error fetching LeetCode stats:", error);
 		return null;
 	}
 }
 
+// Function to take a screenshot of LeetCode page
+async function takeScreenshot(url, outputPath) {
+	const browser = await puppeteer.launch({
+		defaultViewport: {
+			width: 1280,
+			height: 2000,
+		},
+		executablePath:
+			"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+		headless: false,
+	});
+
+	try {
+		const page = await browser.newPage();
+
+		// Set up event listener for page load event
+		await page.goto(url, {
+			waitUntil: "networkidle2",
+		});
+
+		// Selectors for the elements to be captured
+		const profileSelector =
+			".text-label-2.dark\\:text-dark-label-2.flex.flex-col.space-y-4";
+		const solvedProblemsSelector =
+			".bg-layer-1.dark\\:bg-dark-layer-1.shadow-down-01.dark\\:shadow-dark-down-01.rounded-lg.lc-xl\\:h-\\[186px\\].min-h-\\[186px\\].w-full.pb-3.pt-4";
+		const submissionsSelector =
+			".bg-layer-1.dark\\:bg-dark-layer-1.shadow-down-01.dark\\:shadow-dark-down-01.rounded-lg.lc-md\\:pb-4.flex.h-auto.flex-col.space-y-4.p-4.pb-0";
+		// Wait for the elements to be visible
+		await page.waitForSelector(profileSelector);
+		await page.waitForSelector(solvedProblemsSelector);
+		await page.waitForSelector(submissionsSelector);
+
+		// Capture screenshots of the elements
+		const profileSelectorElement = await page.$(profileSelector);
+		const solvedProblemsElement = await page.$(solvedProblemsSelector);
+		const submissionsElement = await page.$(submissionsSelector);
+
+		await profileSelectorElement.screenshot({
+			path: "./ss_result/profile.png",
+		});
+		await solvedProblemsElement.screenshot({
+			path: "./ss_result/solvedProblems.png",
+		});
+		await submissionsElement.screenshot({
+			path: "./ss_result/submissions.png",
+		});
+
+		// Take the screenshot of the whole page (optional)
+		await page.screenshot({ path: outputPath });
+	} catch (error) {
+		console.error("Error taking screenshot:", error);
+	} finally {
+		await browser.close();
+	}
+}
+
 // Example usage
 const username = "manansaipi";
+const leetCodeUrl = `https://leetcode.com/${username}`;
 
 getLeetCodeStats(username)
-	.then((totalProblemsSolved) => {
-		if (totalProblemsSolved !== null) {
+	.then(async (stats) => {
+		if (stats !== null) {
+			// Take a screenshot of LeetCode page
+			await takeScreenshot(leetCodeUrl, "progress.png");
+
 			// Read the current content of README.md
-			// 	fs.readFile("README.md", "utf8", (err, data) => {
-			// 		if (err) {
-			// 			console.error("Error reading README.md:", err);
-			// 			return;
-			// 		}
-			// 		// Replace placeholder with updated value
-			// 		const updatedContent = data.replace(
-			// 			"{total_problems_solved}",
-			// 			totalProblemsSolved
-			// 		);
-			// 		// Write updated content back to README.md
-			// 		fs.writeFile("README.md", updatedContent, "utf8", (err) => {
-			// 			if (err) {
-			// 				console.error("Error writing to README.md:", err);
-			// 				return;
-			// 			}
-			// 			console.log("README.md updated successfully!");
-			// 		});
-			// 	});
+			fs.readFile("README_TEMPLATE.md", "utf8", (err, data) => {
+				if (err) {
+					console.error("Error reading README.md:", err);
+					return;
+				}
+
+				// Replace placeholders with updated values
+				let updatedContent = data.replace(
+					"{total_problems_solved}",
+					stats.totalSolved
+				);
+				updatedContent = updatedContent.replace(
+					"{total_easy}",
+					stats.easySolved
+				);
+				updatedContent = updatedContent.replace(
+					"{total_medium}",
+					stats.mediumSolved
+				);
+				updatedContent = updatedContent.replace(
+					"{total_hard}",
+					stats.hardSolved
+				);
+
+				// Write updated content back to README.md
+				fs.writeFile("../README.md", updatedContent, "utf8", (err) => {
+					if (err) {
+						console.error("Error writing to README.md:", err);
+						return;
+					}
+					console.log("README.md updated successfully!");
+				});
+			});
 		}
 	})
 	.catch((error) => {
