@@ -69,9 +69,6 @@ async function takeScreenshot(url, outputPath) {
 		await lastSubmissionsElement.screenshot({
 			path: "./ss_result/lastSubmissions.png",
 		});
-
-		// Take the screenshot of the whole page (optional)
-		await page.screenshot({ path: outputPath });
 	} catch (error) {
 		console.error("Error taking screenshot:", error);
 	} finally {

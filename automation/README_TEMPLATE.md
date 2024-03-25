@@ -10,15 +10,19 @@
 
 ![Submissions](./automation/ss_result/submissions.png)
 
-</div>
+<h2 align="center">Last Submission</h2>
+
+![LastSubmission](./automation/ss_result/lastSubmissions.png)
+
 My snapshot of my current progress:
 
--   Total Problems Solved: {total_problems_solved}
--   Easy: {total_easy}
--   Medium: {total_medium}
--   Hard: {total_hard}
+Total Problems Solved: {total_problems_solved}
+
+Easy: {total_easy}, Medium: {total_medium}, Hard: {total_hard}
 
 [View My LeetCode Profile](https://leetcode.com/manansaipi)
+
+</div>
 
 ## About
 

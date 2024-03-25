@@ -14,17 +14,14 @@
 
 ![LastSubmission](./automation/ss_result/lastSubmissions.png)
 
-
 My snapshot of my current progress:
 
 Total Problems Solved: 23
 
-
-Easy: 18, 
-Medium: 3, 
-Hard: 2
+Easy: 18, Medium: 3, Hard: 2
 
 [View My LeetCode Profile](https://leetcode.com/manansaipi)
+
 </div>
 
 ## About
