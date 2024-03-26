@@ -2,7 +2,7 @@ const fs = require("fs");
 const axios = require("axios");
 const puppeteer = require("puppeteer");
 
-// Function to fetch LeetCode statistics from API
+// Fetch LeetCode statistics from API
 async function getLeetCodeStats(username) {
 	try {
 		const url = `https://leetcode-stats-api.herokuapp.com/${username}`;
@@ -15,7 +15,7 @@ async function getLeetCodeStats(username) {
 	}
 }
 
-// Function to take a screenshot of LeetCode page
+// Take a screenshot of LeetCode page
 async function takeScreenshot(url, outputPath) {
 	const browser = await puppeteer.launch({
 		defaultViewport: {
@@ -57,6 +57,7 @@ async function takeScreenshot(url, outputPath) {
 		const submissionsElement = await page.$(submissionsSelector);
 		const lastSubmissionsElement = await page.$(lastSubmissionSelector);
 
+		// Save the screenshots result
 		await profileSelectorElement.screenshot({
 			path: "./ss_result/profile.png",
 		});
@@ -76,7 +77,6 @@ async function takeScreenshot(url, outputPath) {
 	}
 }
 
-// Example usage
 const username = "manansaipi";
 const leetCodeUrl = `https://leetcode.com/${username}`;
 
