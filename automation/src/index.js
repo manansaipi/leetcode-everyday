@@ -112,13 +112,18 @@ getLeetCodeStats(username)
 				);
 
 				// Write updated content back to README.md
-				fs.writeFile("../README.md", updatedContent, "utf8", (err) => {
-					if (err) {
-						console.error("Error writing to README.md:", err);
-						return;
+				fs.writeFile(
+					"../solutions/README.md",
+					updatedContent,
+					"utf8",
+					(err) => {
+						if (err) {
+							console.error("Error writing to README.md:", err);
+							return;
+						}
+						console.log("README.md updated successfully!");
 					}
-					console.log("README.md updated successfully!");
-				});
+				);
 			});
 		}
 	})
