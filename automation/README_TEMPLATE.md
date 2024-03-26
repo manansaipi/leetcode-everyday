@@ -4,15 +4,15 @@
 
 <div align="center">
 <p float="left">
-  <img src="../automation/ss_result/profile.png" width="26%" style="margin-right: 1000px;" /> &nbsp; &nbsp; 
-  <img src="../automation/ss_result/solvedProblems.png" width="49%" /> 
+  <img src="./automation/ss_result/profile.png" width="26%" style="margin-right: 1000px;" /> &nbsp; &nbsp; 
+  <img src="./automation/ss_result/solvedProblems.png" width="49%" /> 
 </p>
 
-![Submissions](../automation/ss_result/submissions.png)
+![Submissions](./automation/ss_result/submissions.png)
 
 <h2 align="center">Last Submission</h2>
 
-![LastSubmission](../automation/ss_result/lastSubmissions.png)
+![LastSubmission](./automation/ss_result/lastSubmissions.png)
 
 My snapshot of my current progress:
 
