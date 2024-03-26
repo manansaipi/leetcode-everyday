@@ -4,7 +4,7 @@ This script automates the process of updating LeetCode progress and taking scree
 
 ## Features
 
--   Fetch LeetCode statistics from the LeetCode API.
+-   Fetch LeetCode statistics from the API.
 -   Take screenshots of LeetCode profile, solved problems, submissions, and last submissions.
 -   Update README.md with the latest LeetCode statistics.
 
