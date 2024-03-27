@@ -41,26 +41,27 @@ This repository includes a pre-commit hook to enforce checks before making a com
     ```bash
     #!/bin/sh
 
-    # Run your Node.js script to update the README and take screenshots
+    # Change directory to your project directory
     cd "C:\Users\saipiab9\Desktop\leetcode everyday\automation"
 
-    # Run npm start
+    # Run npm start to update README and take screenshots
     npm start
 
     # Check the exit code of npm start
     if [ $? -eq 0 ]; then
         echo "npm start successful. Exiting script."
         exit 0
-        wait 2
     else
         echo "npm start failed. Proceeding with git operations."
     fi
 
+    # Wait for 2 seconds
+    wait 2
 
     # Add the updated files to the staging area
     git add .
 
-    # Proceed with the default actions (e.g., launch Notepad for editing commit messages, handle line endings)
+    # Proceed with the default actions
     exec git commit --edit "$@"
     ```
 
