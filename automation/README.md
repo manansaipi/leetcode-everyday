@@ -41,7 +41,7 @@ This repository includes a pre-commit hook to enforce checks before making a com
     ```bash
     #!/bin/bash
 
-    # Change directory to the location of your Node.js script
+    # Change directory to your project directory
     cd "C:\Users\saipiab9\Desktop\leetcode everyday\automation"
 
     # Run npm start
@@ -49,6 +49,8 @@ This repository includes a pre-commit hook to enforce checks before making a com
 
     # Check the exit code of npm start
     if [ $? -eq 0 ]; then
+        echo "npm start successful. Exiting script."
+
         # Add the updated files to the staging area
         if git add .; then
             echo "Git add successful."
@@ -56,7 +58,6 @@ This repository includes a pre-commit hook to enforce checks before making a com
             echo "Git add failed."
             exit 1
         fi
-        echo "npm start successful. Exiting script."
         exit 0
     else
         echo "npm start failed. Proceeding with git operations."
