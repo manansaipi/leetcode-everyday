@@ -32,7 +32,7 @@ async function takeScreenshot(url, outputPath) {
 
 		// Set up event listener for page load event
 		await page.goto(url, {
-			waitUntil: "networkidle2",
+			waitUntil: "networkidle2", 
 		});
 
 		// Selectors for the elements to be captured
