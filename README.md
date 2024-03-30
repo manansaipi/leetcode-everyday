@@ -16,9 +16,9 @@
 
 My snapshot of my current progress:
 
-Total Problems Solved: 26
+Total Problems Solved: 28
 
-Easy: 20, Medium: 4, Hard: 2
+Easy: 21, Medium: 4, Hard: 3
 
 [View My LeetCode Profile](https://leetcode.com/manansaipi)
 
