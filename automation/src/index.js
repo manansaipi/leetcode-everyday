@@ -16,7 +16,7 @@ async function getLeetCodeStats(username) {
 }
 
 // Take a screenshot of LeetCode page
-async function takeScreenshot(url, outputPath) {
+async function takeScreenshot(url) {
 	const browser = await puppeteer.launch({
 		defaultViewport: {
 			width: 1280 * 1.5,
@@ -32,7 +32,7 @@ async function takeScreenshot(url, outputPath) {
 
 		// Set up event listener for page load event
 		await page.goto(url, {
-			waitUntil: "networkidle2", 
+			waitUntil: "networkidle2",
 		});
 
 		// Selectors for the elements to be captured
@@ -83,9 +83,6 @@ const leetCodeUrl = `https://leetcode.com/${username}`;
 getLeetCodeStats(username)
 	.then(async (stats) => {
 		if (stats !== null) {
-			// Take a screenshot of LeetCode page
-			await takeScreenshot(leetCodeUrl, "progress.png");
-
 			// Read the current content of README.md
 			fs.readFile("README_TEMPLATE.md", "utf8", (err, data) => {
 				if (err) {
@@ -120,6 +117,9 @@ getLeetCodeStats(username)
 					console.log("README.md updated successfully!");
 				});
 			});
+
+			// Take a screenshot of LeetCode page
+			await takeScreenshot(leetCodeUrl);
 		}
 	})
 	.catch((error) => {
