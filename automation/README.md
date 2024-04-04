@@ -54,7 +54,7 @@ This repository includes a pre-commit hook to enforce checks before making a com
         # Add the updated files to the staging area
         if git add .; then
             echo "Git add successful."
-            wait 1
+            sleep 1
         else
             echo "Git add failed."
             exit 1
