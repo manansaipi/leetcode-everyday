@@ -50,11 +50,10 @@ This repository includes a pre-commit hook to enforce checks before making a com
     # Check the exit code of npm start
     if [ $? -eq 0 ]; then
         echo "npm start successful. Exiting script."
-
+        sleep 1
         # Add the updated files to the staging area
         if git add .; then
             echo "Git add successful."
-            sleep 1
         else
             echo "Git add failed."
             exit 1
