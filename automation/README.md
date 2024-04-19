@@ -46,6 +46,7 @@ This repository includes a pre-commit hook to enforce checks before making a com
 
     # Run npm start
     npm start
+    sleep 2
 
     # Check the exit code of npm start
     if [ $? -eq 0 ]; then
@@ -54,7 +55,6 @@ This repository includes a pre-commit hook to enforce checks before making a com
         # Add the updated files to the staging area
         if git add .; then
             echo "Git add successful."
-            sleep 1
         else
             echo "Git add failed."
             exit 1
