@@ -73,6 +73,7 @@ async function takeScreenshot(url) {
 	} catch (error) {
 		console.error("Error taking screenshot:", error);
 	} finally {
+		console.log("Screnshoot taken successfully!");
 		await browser.close();
 	}
 }

@@ -46,7 +46,7 @@ This repository includes a pre-commit hook to enforce checks before making a com
 
     # Run npm start
     npm start
-    sleep 5
+    sleep 2
 
     # Check the exit code of npm start
     if [ $? -eq 0 ]; then
