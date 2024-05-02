@@ -5,22 +5,32 @@
  * @return {boolean}
  */
 var isValidSudoku = function (board) {
-	let container = [];
+	for (let i = 0; i < 9; i++) {
+		let rowSet = new Set();
+		let colSet = new Set();
+		let gridSet = new Set();
 
-	for (let i = 0; i < board.length; i++) {
-		for (let y = 0; y < board[i].length; y++) {
-			if (board[y][i] != ".") {
-				if (container.includes(board[y][i])) {
-					return false;
-				} else {
-					container.push(board[y][i]);
-				}
+		for (let j = 0; j < 9; j++) {
+			// Check rows
+			if (board[i][j] !== "." && rowSet.has(board[i][j])) {
+				return false;
 			}
+			rowSet.add(board[i][j]);
+
+			// Check columns
+			if (board[j][i] !== "." && colSet.has(board[j][i])) {
+				return false;
+			}
+			colSet.add(board[j][i]);
+
+			// Check subgrids
+			let row = 3 * Math.floor(i / 3) + Math.floor(j / 3);
+			let col = 3 * (i % 3) + (j % 3);
+			if (board[row][col] !== "." && gridSet.has(board[row][col])) {
+				return false;
+			}
+			gridSet.add(board[row][col]);
 		}
-		if (container.length == 0) {
-			return false;
-		}
-		container = [];
 	}
 	return true;
 };
