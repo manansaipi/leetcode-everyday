@@ -2,16 +2,12 @@
 /**
  * @param {number[]} nums
  * @param {number[][]} queries
- * @return {number}
+ * @return {number}\
+ * COME BACK LATER
  */
-/**
- * @param {number[]} nums
- * @param {number[][]} queries
- * @return {number}
- */
-var maxRemoval = function(nums, queries) {
+var maxRemoval = function (nums, queries) {
     // Group queries by start time using lodash _.groupBy or custom implementation
-    const g = _.groupBy(queries, x => x[0]);
+    const g = _.groupBy(queries, (x) => x[0]);
 
     // Max priority queue for query end times
     const h = new MaxPriorityQueue();
@@ -41,7 +37,7 @@ var maxRemoval = function(nums, queries) {
 
         // Push all queries starting at i into max-heap
         if (g[i]) {
-            g[i].forEach(y => h.enqueue(y[1]));
+            g[i].forEach((y) => h.enqueue(y[1]));
         }
 
         // Assign queries greedily to satisfy nums[i]
@@ -54,17 +50,79 @@ var maxRemoval = function(nums, queries) {
     return h.size();
 };
 
-console.log(maxRemoval([2,0,2], [[0,2],[0,2],[1,1]]))
+console.log(
+    maxRemoval(
+        [2, 0, 2],
+        [
+            [0, 2],
+            [0, 2],
+            [1, 1],
+        ]
+    )
+);
 // expected output : 1
-console.log(maxRemoval([0,1,0], [[0,0],[0,0],[0,2],[2,2]]))
+console.log(
+    maxRemoval(
+        [0, 1, 0],
+        [
+            [0, 0],
+            [0, 0],
+            [0, 2],
+            [2, 2],
+        ]
+    )
+);
 // expected output : 3
-console.log(maxRemoval([1,2], [[1,1],[0,0],[1,1],[1,1],[0,1],[0,0]]))
+console.log(
+    maxRemoval(
+        [1, 2],
+        [
+            [1, 1],
+            [0, 0],
+            [1, 1],
+            [1, 1],
+            [0, 1],
+            [0, 0],
+        ]
+    )
+);
 // expected output : 4
-console.log(maxRemoval([1,3], [[1,1],[0,1],[1,1],[0,1]]))
+console.log(
+    maxRemoval(
+        [1, 3],
+        [
+            [1, 1],
+            [0, 1],
+            [1, 1],
+            [0, 1],
+        ]
+    )
+);
 // expected output : 1
-console.log(maxRemoval([0,3], [[0,1],[0,0],[0,1],[0,1],[0,0]]))
+console.log(
+    maxRemoval(
+        [0, 3],
+        [
+            [0, 1],
+            [0, 0],
+            [0, 1],
+            [0, 1],
+            [0, 0],
+        ]
+    )
+);
 // expected output : 2
-console.log(maxRemoval([1,1,1,1], [[1,3],[0,2],[1,3],[1,2]]))
+console.log(
+    maxRemoval(
+        [1, 1, 1, 1],
+        [
+            [1, 3],
+            [0, 2],
+            [1, 3],
+            [1, 2],
+        ]
+    )
+);
 // expected output : 2
-console.log(maxRemoval([1,2,3,4], [[0,3]]))
+console.log(maxRemoval([1, 2, 3, 4], [[0, 3]]));
 // expected output : -1
