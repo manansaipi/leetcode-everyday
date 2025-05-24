@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/set-matrix-zeroes/description/?envType=daily-question&envId=2025-05-21
+// https://leetcode.com/poblems/set-matrix-zeroes/description/?envType=daily-question&envId=2025-05-21
 /**
  * @param {number[][]} matrix
  * @return {void} Do not return anything, modify matrix in-place instead.
