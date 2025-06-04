@@ -57,40 +57,6 @@ var isSymmetric = function (root) {
     return JSON.stringify(result1) === JSON.stringify(result2);
 };
 
-var isSymmetric = function (root) {
-    if (root == null) return true;
-
-    let reverse = false;
-    let rootVal = root.val;
-
-    let result1 = [];
-    let result2 = [];
-
-    function traverse(currentNode) {
-        if (reverse) {
-            if (currentNode.right) traverse(currentNode.right);
-            result1.push(currentNode.val);
-            if (currentNode.left) traverse(currentNode.left);
-        } else {
-            if (currentNode.left) traverse(currentNode.left);
-            if (currentNode.val == rootVal) {
-                reverse = true;
-            } else {
-                result2.push(currentNode.val);
-            }
-            if (currentNode.right) traverse(currentNode.right);
-        }
-    }
-
-    traverse(root);
-
-    console.log(JSON.stringify(result1) === JSON.stringify(result2)); // true if symmetric
-    console.log(result1); // e.g. [3, 2, 4]
-    console.log(result2); // e.g. [3, 2, 4]
-
-    return JSON.stringify(result1) === JSON.stringify(result2);
-};
-
 // this is the right answer
 var isSymmetric = function (root) {
     if (root == null) return true;
