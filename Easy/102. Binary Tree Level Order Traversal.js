@@ -12,26 +12,25 @@
  * @return {number[][]}
  */
 var levelOrder = function(root) {
-    let result  = []
-    if(!root) return result
+    let result = [];
+    if (!root) return result;
 
-    let queue = [root]
-    result.push([root.val])
-    while(queue.length) {
-        let arr = []
-        let cNode = queue.shift()
+    let queue = [root];
 
-        if(cNode.left) {
-            arr.push(cNode.left.val)
-            queue.push(cNode.left)
+    while (queue.length > 0) {
+        let levelSize = queue.length;
+        let level = [];
+
+        for (let i = 0; i < levelSize; i++) {
+            let node = queue.shift();
+            level.push(node.val);
+
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
         }
-        if(cNode.right) {
-            arr.push(cNode.right.val)
-            queue.push(cNode.right)
-        }
-        if(arr.length>0) result.push(arr)
+
+        result.push(level);
     }
-    return result
 
-    
+    return result;
 };
